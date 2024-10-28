@@ -37,88 +37,79 @@ const LoginPage = () => {
   };
 
   return (
-    <>
-      <div className="mx-auto bg-slate-50 content flex flex-col justify-center items-center">
-        <div className=" p-4  border rounded bg-white">
-          <div className="text-xl justify-center text-black mb-4 ">
-            Sign In to your Account
-          </div>
-          <form onSubmit={handleSubmit(onSubmit)} noValidate>
-            <Stack spacing={2} width={400}>
-              <TextField
-                label="Email Id"
-                type="email"
-                {...register("email", {
-                  required: "Email is required",
-                  pattern: {
-                    value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-                    message: "Enter a valid email",
-                  },
-                })}
-                error={!!errors.email}
-                helperText={errors.email?.message}
-                sx={{
-                  "& label": { paddingLeft: (theme) => theme.spacing(1) },
-                  "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
-                  "& fieldset": {
-                    paddingLeft: (theme) => theme.spacing(1.5),
-                    borderRadius: "10px",
-                  },
-                }}
-              />
-              <TextField
-                label="Password"
-                type="password"
-                {...register("password", {
-                  required: "Password is required",
-                })}
-                error={!!errors.password}
-                helperText={errors.password?.message}
-                sx={{
-                  "& label": {
-                    paddingLeft: (theme) => theme.spacing(1),
-                  },
-                  "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
-                  "& fieldset": {
-                    paddingLeft: (theme) => theme.spacing(1.5),
-                    borderRadius: "10px",
-                  },
-                }}
-              />
-              <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                style={{
-                  background: "#FF5353",
+    <div className="container mx-auto px-4 sm:px-8 min-h-screen flex items-center justify-center">
+      <div className="w-full max-w-md p-6 border rounded-lg bg-white shadow-md">
+        <h2 className="text-xl text-center text-black mb-6">Sign In to your Account</h2>
+        <form onSubmit={handleSubmit(onSubmit)} noValidate>
+          <Stack spacing={2}>
+            <TextField
+              label="Email Id"
+              type="email"
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+                  message: "Enter a valid email",
+                },
+              })}
+              error={!!errors.email}
+              helperText={errors.email?.message}
+              sx={{
+                "& label": { paddingLeft: (theme) => theme.spacing(1) },
+                "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
+                "& fieldset": {
+                  paddingLeft: (theme) => theme.spacing(1.5),
                   borderRadius: "10px",
-                  textTransform: "none",
-                  fontSize: "16px",
-                }}
-              >
-                Login
-              </Button>
-            </Stack>
-          </form>
-          <div className="mx-auto"></div>
-          <br />
-          <div className="mv-1 border-t mx-16" />
-          <div className="flex justify-center">
-            <p className="-mt-3 bg-white px-3 text-[#CCCCCC]">OR</p>
-          </div>
-          <br />
-          <p
-            className="text-[#656565] text-center"
-            onClick={() => {
-              navigate("/register");
-            }}
-          >
-            Create a new account
-          </p>
+                },
+              }}
+            />
+            <TextField
+              label="Password"
+              type="password"
+              {...register("password", {
+                required: "Password is required",
+              })}
+              error={!!errors.password}
+              helperText={errors.password?.message}
+              sx={{
+                "& label": { paddingLeft: (theme) => theme.spacing(1) },
+                "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
+                "& fieldset": {
+                  paddingLeft: (theme) => theme.spacing(1.5),
+                  borderRadius: "10px",
+                },
+              }}
+            />
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              style={{
+                background: "#FF5353",
+                borderRadius: "10px",
+                textTransform: "none",
+                fontSize: "16px",
+              }}
+            >
+              Login
+            </Button>
+          </Stack>
+        </form>
+        <div className="relative mt-8">
+          <div className="absolute inset-x-0 top-0 border-t border-gray-200"></div>
+          <p className="relative text-center bg-white px-3 text-[#CCCCCC] -mt-3">OR</p>
         </div>
+        <p
+          className="text-[#656565] text-center mt-6 cursor-pointer"
+          onClick={() => {
+            navigate("/register");
+          }}
+        >
+          Create a new account
+        </p>
       </div>
-      {/* <DevTool control={control}></DevTool> */}
-    </>
+    </div>
+    // {/* <DevTool control={control}></DevTool> */}
   );
 };
 
