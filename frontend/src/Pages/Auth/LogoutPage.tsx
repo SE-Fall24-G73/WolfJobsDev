@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useUserStore } from "../../store/UserStore";
 import { useNavigate } from "react-router-dom";
+import { CircularProgress, Box, Typography } from "@mui/material";
 
 const LogoutPage = () => {
   const updateName = useUserStore((state) => state.updateName);
@@ -16,6 +17,7 @@ const LogoutPage = () => {
   const updateIsLoggedIn = useUserStore((state) => state.updateIsLoggedIn);
 
   const navigate = useNavigate();
+
   useEffect(() => {
     localStorage.clear();
 
@@ -31,11 +33,28 @@ const LogoutPage = () => {
     updateHours("");
     updateIsLoggedIn(false);
 
-    navigate("/login");
-    console.log("Logged out");
+    setTimeout(() => {
+      navigate("/login");
+      console.log("Logged out");
+    }, 1000); // Optional delay for a smoother user experience
   }, []);
 
-  return <></>;
+  return (
+    <Box
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      minHeight="100vh"
+      textAlign="center"
+      padding={2}
+    >
+      <CircularProgress />
+      <Typography variant="h6" marginTop={2}>
+        Logging out...
+      </Typography>
+    </Box>
+  );
 };
 
 export default LogoutPage;
