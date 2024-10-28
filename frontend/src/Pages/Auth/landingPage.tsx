@@ -43,15 +43,7 @@ const LandingPage = () => {
         your campus experience!
       </div>
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: "10px",
-          marginTop: "10px",
-        }}
-      >
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "10px", marginTop: "10px" }}>
         <button
           onClick={(e) => {
             e.preventDefault();
@@ -104,12 +96,9 @@ const LandingPage = () => {
           }}
           type="button"
           style={{
-            boxSizing: "border-box",
-            position: "absolute",
-            width: "223px",
+            width: "40%",
+            maxWidth: "223px",
             height: "54px",
-            left: "359px",
-            top: "501px",
             background: "#FFFFFF",
             border: "1px solid #656565",
             borderRadius: "10px",
@@ -120,8 +109,8 @@ const LandingPage = () => {
               fontFamily: "Urbanist",
               fontStyle: "normal",
               fontWeight: 600,
-              fontSize: "20px",
-              lineHeight: "24px",
+              fontSize: "4vw",
+              lineHeight: "1.2",
               margin: 0,
               color: "#656565",
             }}
@@ -129,31 +118,40 @@ const LandingPage = () => {
             Login
           </p>
         </button>
+      </div>
 
-        <div
+      <div
+        style={{
+          position: "relative",
+          width: "90%",
+          maxWidth: "735px",
+          margin: "auto",
+          marginTop: "20px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <img
+          src="/images/landingpage_image1.png"
+          alt="Landing Page Image"
+          style={{
+            width: "100%",
+            height: "auto",
+            maxWidth: "100%",
+          }}
+        />
+        <img
+          src="/images/landingpage_image2.png"
+          alt="Landing Page Image"
           style={{
             position: "absolute",
-            width: "735px",
-            height: "752px",
-            left: "669px",
-            top: "121px",
-            mixBlendMode: "multiply",
+            width: "60%",
+            maxWidth: "420px",
+            height: "auto",
+            top: "10%",
           }}
-        >
-          <img src="/images/landingpage_image1.png" alt="Landing Page Image" />
-        </div>
-
-        <div
-          style={{
-            position: "absolute",
-            width: "420px",
-            height: "640px",
-            left: "612px",
-            top: "167px",
-          }}
-        >
-          <img src="/images/landingpage_image2.png" alt="Landing Page Image" />
-        </div>
+        />
       </div>
     </div>
   );
