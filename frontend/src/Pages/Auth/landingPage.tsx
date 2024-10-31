@@ -1,58 +1,88 @@
 import { useNavigate } from "react-router-dom";
+import { Button, Typography, Stack, Box } from "@mui/material";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 const LandingPage = () => {
   const navigate = useNavigate();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between min-h-screen bg-gray-50 px-6 md:px-12 lg:px-24 pt-8 md:pt-0"> {/* Added top padding for smaller screens */}
-      {/* Text Section */}
-      <div className="max-w-lg flex flex-col justify-center space-y-4 md:mr-8 text-left">
-        <h1 className="font-urbanist font-semibold text-3xl md:text-5xl text-black">
-          We understand that being a student can be{" "}
-          <span className="text-red-500">challenging.</span>
-        </h1>
-        <p className="font-urbanist font-normal text-lg text-gray-700">
-          Join our dynamic team right here on campus. Earn, learn, and be part of
-          the community that powers your daily essentials. Apply now and shape
-          your campus experience!
-        </p>
-        <div className="flex flex-col md:flex-row justify-start gap-4">
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              navigate("/register");
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: "100vh",
+        backgroundImage: "url('/path/to/your/background-image.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        textAlign: "center",
+        padding: isMobile ? 3 : 10,
+        color: "#fff",
+      }}
+    >
+      <Box
+        sx={{
+          bgcolor: "rgba(0, 0, 0, 0.6)",
+          padding: isMobile ? 3 : 6,
+          borderRadius: "12px",
+          maxWidth: 600,
+          textAlign: "center",
+        }}
+      >
+        <Typography variant={isMobile ? "h4" : "h2"} fontWeight="700" mb={2}>
+          We understand that being a student can be challenging.
+        </Typography>
+
+        <Typography variant="h6" fontWeight="400" mb={4}>
+          Join our dynamic team right here on campus. Earn, learn, and be part
+          of the community that powers your daily essentials. Apply now and
+          shape your campus experience!
+        </Typography>
+
+        <Stack
+          direction={isMobile ? "column" : "row"}
+          spacing={2}
+          justifyContent="center"
+        >
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => navigate("/signup")}
+            sx={{
+              fontWeight: "600",
+              padding: isMobile ? "10px 20px" : "14px 32px",
+              fontSize: isMobile ? "16px" : "18px",
+              textTransform: "none",
+              borderRadius: "8px",
             }}
-            className="bg-red-500 text-white font-semibold text-lg py-2 px-6 rounded-lg transition duration-300 hover:bg-red-600"
           >
             Sign Up
-          </button>
-          <p className="font-poppins font-medium text-lg text-gray-500 self-center">OR</p>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              navigate("/login");
+          </Button>
+
+          <Typography variant="body1" sx={{ color: "#CCCCCC" }}>
+            OR
+          </Typography>
+
+          <Button
+            variant="outlined"
+            color="secondary"
+            onClick={() => navigate("/login")}
+            sx={{
+              fontWeight: "600",
+              padding: isMobile ? "10px 20px" : "14px 32px",
+              fontSize: isMobile ? "16px" : "18px",
+              textTransform: "none",
+              borderRadius: "8px",
             }}
-            className="border border-gray-600 bg-white text-gray-600 font-semibold text-lg py-2 px-6 rounded-lg transition duration-300 hover:bg-gray-100"
           >
             Login
-          </button>
-        </div>
-      </div>
-
-      {/* Image Section */}
-      <div className="flex flex-col md:flex-row items-center justify-center space-x-4 mt-8 md:mt-0">
-        <img
-          src="/images/landingpage_image1.png"
-          alt="Landing Page Image 1"
-          className="w-1/2 max-w-[350px] h-auto"
-        />
-        <img
-          src="/images/landingpage_image2.png"
-          alt="Landing Page Image 2"
-          className="w-1/2 max-w-[350px] h-auto"
-        />
-      </div>
-    </div>
+          </Button>
+        </Stack>
+      </Box>
+    </Box>
   );
 };
 
